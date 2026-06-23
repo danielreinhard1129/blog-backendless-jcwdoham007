@@ -5,7 +5,7 @@ import type { Blog } from "@/types/blog";
 export function BlogCard({ blog }: { blog: Blog }) {
   return (
     <Link
-      to=""
+      to={`/blogs/${blog.objectId}`}
       className={`group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-card`}
     >
       <div className={`relative overflow-hidden bg-muted aspect-16/10`}>
