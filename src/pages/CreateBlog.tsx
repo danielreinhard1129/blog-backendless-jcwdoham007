@@ -93,11 +93,6 @@ function CreateBlog() {
                 Draft it. Preview it. Ship it when it's ready.
               </p>
             </div>
-            <div className="flex gap-2">
-              <Button className="gradient-primary text-primary-foreground hover:opacity-90 shadow-glow">
-                Publish
-              </Button>
-            </div>
           </div>
 
           {/* Body */}

@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import BlogDetail from "./pages/BlogDetail";
 import CreateBlog from "./pages/CreateBlog";
 import { Toaster } from "react-hot-toast";
+import { authLoader } from "./loaders/auth";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/create",
     element: <CreateBlog />,
+    loader: authLoader,
   },
 ]);
 
