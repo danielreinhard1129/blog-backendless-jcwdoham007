@@ -5,6 +5,8 @@ import "./index.css";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import BlogDetail from "./pages/BlogDetail";
+import CreateBlog from "./pages/CreateBlog";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +21,15 @@ const router = createBrowserRouter([
     path: "/blogs/:objectId",
     element: <BlogDetail />,
   },
+  {
+    path: "/create",
+    element: <CreateBlog />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />,
+  <>
+    <RouterProvider router={router} />
+    <Toaster />
+  </>,
 );

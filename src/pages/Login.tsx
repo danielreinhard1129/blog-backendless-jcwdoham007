@@ -10,6 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { z } from "zod";
 import GoogleIcon from "../components/icons/GoogleIcon";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   email: z.email(),
@@ -43,7 +44,7 @@ function Login() {
         password: data.password,
       });
 
-      alert("login success");
+      toast.success("login success");
 
       login({
         email: response.data.email,
@@ -55,7 +56,7 @@ function Login() {
       navigate("/");
     } catch (error) {
       console.log(error);
-      alert("login failed");
+      toast.error("login failed");
     } finally {
       setIsPending(false);
     }
