@@ -2,9 +2,12 @@ import { Link } from "react-router";
 import { PenLine, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/stores/useAuth";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuth();
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -27,28 +30,37 @@ export function Navbar() {
           <a href="#" className="hover:text-foreground transition-colors">
             Authors
           </a>
-          <Link
-            to="/create"
-            className="hover:text-foreground transition-colors"
-          >
-            Write
-          </Link>
+
+          {!!user && (
+            <Link
+              to="/create"
+              className="hover:text-foreground transition-colors"
+            >
+              Write
+            </Link>
+          )}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link to="/login">
-            <Button variant="ghost" size="sm">
-              Sign in
-            </Button>
-          </Link>
-          <Link to="/create">
-            <Button
-              size="sm"
-              className="gradient-primary text-primary-foreground hover:opacity-90 shadow-glow"
-            >
-              Start writing
-            </Button>
-          </Link>
+          {!user ? (
+            <Link to="/login">
+              <Button variant="ghost" size="sm">
+                Sign in
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/create">
+                <Button className="gradient-primary text-primary-foreground hover:opacity-90 shadow-glow">
+                  Start writing
+                </Button>
+              </Link>
+
+              <Button variant="destructive" onClick={logout}>
+                Logout
+              </Button>
+            </>
+          )}
         </div>
 
         <button
